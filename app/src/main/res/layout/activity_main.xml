@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/black"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        android:layout_marginTop="20dp"
+        android:text="LETTER LINGO"
+        android:textAlignment="center"
+        android:textColor="@color/teal_200"
+        android:textSize="32sp"
+        tools:ignore="HardcodedText" />
+
+    <ImageButton
+        android:id="@+id/btHelp"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:backgroundTint="@color/black"
+
+        app:srcCompat="@android:drawable/ic_menu_help"
+        app:tint="#FF0000"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <EditText
+            android:id="@+id/txtPlayerName"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/teal_200"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="@color/purple_200"
+            android:textColorHighlight="#00FFE7"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="@color/teal_200"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
+        <TextView
+            android:id="@+id/txtCounter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="NAME"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btPlay"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="PLAY"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+
+
+
+</LinearLayout>
