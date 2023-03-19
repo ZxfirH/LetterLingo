@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import com.az.letterlingo.databinding.ActivityGameBinding
 import com.google.android.material.navigation.NavigationView
@@ -24,30 +25,6 @@ class GameActivity : AppCompatActivity() {
     // on below line creating a
     // variable for activity binding.
     private lateinit var binding: ActivityGameBinding
-
-
-
-    // on below line creating a variable
-    // for word which user has to guess.
-    private val words = listOf(  "ABOUT", "ALERT", "ARGUE", "ALIVE", "ARRAY",
-                                "BEGIN", "BIRTH", "BLAME", "BLOCK", "BASES",
-                                "CABLE", "CATCH", "CLASS", "CREAM", "CROWN",
-                                "DRAMA", "DOZEN", "DYING", "DRILL", "DEBUT",
-                                "EQUAL", "ENTRY", "EXTRA", "ERROR", "EXIST",
-                                "FRAUD", "FOUND", "FORTH", "FIELD", "FLUID",
-                                "GLASS", "GRADE", "GRANT", "GIANT", "GRACE",
-                                "HENCE", "HORSE", "HUMAN", "HAPPY", "HOTEL",
-                                "INNER", "INDEX", "IMAGE", "IRONY", "IDEAL",
-                                "JOINT", "JUICE", "JUDGE", "LOGIC", "LARGE",
-                                "KNOWN", "MAGIC", "MONTH", "OFTEN", "OCEAN",
-                                "MONEY", "NEEDS", "NEVER", "LIMIT", "LEGAL",
-                                "MAYOR", "MUSIC", "ROYAL", "PAINT", "RIVAL",
-                                "OFFER", "OCCUR", "PROOF", "QUEEN", "QUICK",
-                                "SHAPE", "TIMES", "SUGAR", "SPEND", "SPEED",
-                                "THANK", "TRIED", "STORM", "THICK", "URBAN",
-                                "USAGE", "VALUE", "YOUNG", "WORRY", "WORST",
-                                "VISIT", "VOICE", "YOUTH", "WHITE", "BLACK")
-
 
     var obj = WordsActivity()
     var secondLists = obj.realWords
@@ -73,6 +50,9 @@ class GameActivity : AppCompatActivity() {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
             val username = intent.getStringExtra("Username")
+            val showBTPlayAgain = findViewById<Button>(R.id.btPlayAgain)
+            showBTPlayAgain.isVisible = false
+            showBTPlayAgain.isEnabled = false
 
             navigationView.setNavigationItemSelectedListener { menuItem ->
                     val id = menuItem.itemId
@@ -111,6 +91,14 @@ class GameActivity : AppCompatActivity() {
         {
                 capitalWordsConverting.add(word.uppercase())
         }
+
+        val BTPlayAgain = findViewById<Button>(R.id.btPlayAgain)
+        BTPlayAgain.setOnClickListener{
+            finish()
+            startActivity(getIntent())
+        }
+
+
         val guess = findViewById<Button>(R.id.btGuess)
         guess.setOnClickListener {
             var wordEntered = findViewById<EditText>(R.id.txtWordGuess)
@@ -542,7 +530,7 @@ class GameActivity : AppCompatActivity() {
             //binding.idTVCongo.text = "Congratulations, you have guessed the right word."
             //binding.idTVCongo.visibility = View.VISIBLE
             // on below line calling below method to make game inactive.
-            makeGameInactive()
+
             // on below line displaying toast message.
                 val username = intent.getStringExtra("Username")
             Toast.makeText(
@@ -550,6 +538,14 @@ class GameActivity : AppCompatActivity() {
                 "Congratulations $username, you have guessed the right word  ;)",
                 Toast.LENGTH_LONG
             ).show()
+            val disableGuess = findViewById<EditText>(R.id.txtWordGuess)
+            disableGuess.isEnabled = false
+            val disableGuessBt = findViewById<Button>(R.id.btGuess)
+            disableGuessBt.isEnabled = false
+            makeGameInactive()
+            val showBTPlayAgain = findViewById<Button>(R.id.btPlayAgain)
+            showBTPlayAgain.isVisible = true
+            showBTPlayAgain.isEnabled = true
             return
         }
 
@@ -561,13 +557,21 @@ class GameActivity : AppCompatActivity() {
             //binding.idTVCongo.visibility = View.VISIBLE
             // on below line calling
             // inactive to make game inactive.
-            makeGameInactive()
+
             // on below line displaying toast message
             Toast.makeText(
                 applicationContext,
                 "Unluckkkyyyyy, get better :( ",
                 Toast.LENGTH_LONG
             ).show()
+            val disableGuess = findViewById<EditText>(R.id.txtWordGuess)
+            disableGuess.isEnabled = false
+            val disableGuessBt = findViewById<Button>(R.id.btGuess)
+            disableGuessBt.isEnabled = false
+            makeGameInactive()
+            val showBTPlayAgain = findViewById<Button>(R.id.btPlayAgain)
+            showBTPlayAgain.isVisible = true
+            showBTPlayAgain.isEnabled = true
 
         }
     }
@@ -650,4 +654,7 @@ class GameActivity : AppCompatActivity() {
                         super.onBackPressed()
                 }
         }
+
+
+
 }

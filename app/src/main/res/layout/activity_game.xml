@@ -11,23 +11,43 @@
     android:orientation="vertical"
     tools:context=".GameActivity">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/my_drawer_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/black"
-        tools:context=".DrawerActivity"
-        tools:ignore="HardcodedText,SpeakableTextPresentCheck">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/drawer_items"
-            tools:ignore="RtlHardcoded" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/my_drawer_layout"
+            android:layout_width="243dp"
+            android:layout_height="100dp"
+            android:background="@color/black"
+            tools:context=".DrawerActivity"
+            tools:ignore="HardcodedText,SpeakableTextPresentCheck">
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/navigation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                app:menu="@menu/drawer_items"
+                tools:ignore="RtlHardcoded" />
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btPlayAgain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Play Again"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
